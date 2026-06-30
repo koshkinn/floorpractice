@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FloorMAUI.Views.MaterialPage"
+             Title="MaterialPage"
+             BackgroundColor="White">
+    <VerticalStackLayout >
+        <Button Text="Назад"
+                WidthRequest="150"
+                HorizontalOptions="Start" 
+                Margin="5"
+                Command="{Binding CancelCommand}"/>
+        <CollectionView ItemsSource="{Binding Products}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedProduct}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Grid.Column="0">
+                        <HorizontalStackLayout 
+                            HorizontalOptions="Center">
+                            <Label Text="{Binding Name}"
+                                   TextColor="Black"
+                                   FontSize="Medium"
+                                   Margin="10"
+                                   VerticalOptions="Center"/>   
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Label Text="Введите высоту и ширину:"
+               TextColor="Black"
+               HorizontalOptions="Center"
+               Margin="5"/>
+       <Entry Placeholder="Ширина" BackgroundColor="Gray"
+       WidthRequest="300"
+       HorizontalOptions="Center"
+       PlaceholderColor="Black"
+       Text="{Binding Width}"/>
+        
+        <Entry Placeholder="Высота" BackgroundColor="Gray"
+       WidthRequest="300"
+       HorizontalOptions="Center"
+       PlaceholderColor="Black"
+       Text="{Binding Height}"/>
+        
+        <Button Text="Расчитать"
+                FontSize="Large"
+                WidthRequest="300"
+                Margin="50"
+                Command="{Binding GetMaterialAmountCommand}"/>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Text="Количество материала:"
+                   VerticalOptions="Center"
+                   FontSize="Medium"
+                   TextColor="Black"/>
+            <Label Text="{Binding MaterialAmount}"
+                   TextColor="Black"
+                   FontSize="Large"
+                   HorizontalOptions="Center"
+                   Margin="15"
+                   VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+        <!--public int Id { get; set; }-->
+
+    <!--public string? Type { get; set; }
+
+    public string? Name { get; set; }
+
+    public string? Article { get; set; }
+
+    public decimal? MinPrice { get; set; }
+
+    public decimal? Coefficient { get; set; }
+
+    public decimal? DefectPercentage { get; set; }-->
+    </VerticalStackLayout>
+</ContentPage>

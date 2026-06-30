@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FloorMAUI.Views.AddPage"
+             Title="AddPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="TitleColor" Value="Gray"/>
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="PlaceholderColor" Value="Gray"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView BackgroundColor="White">
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Label Text="Добавить партнера" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" Margin="0,0,0,10"/>
+
+            <Label Text="*Наименование:"/>
+            <Entry Placeholder="Введите наименование..." Text="{Binding Name}"/>
+            <BoxView HeightRequest="1" Color="Gray" Margin="0,0,0,10"/>
+
+            <Label Text="*Тип:"/>
+            <Picker Title="Выберите тип..." SelectedItem="{Binding Type}">
+                <Picker.Items>
+                    <x:String>ЗАО</x:String>
+                    <x:String>ОАО</x:String>
+                    <x:String>ПАО</x:String>
+                    <x:String>ООО</x:String>
+                </Picker.Items>
+            </Picker>
+            <BoxView HeightRequest="1" Color="Gray" Margin="0,0,0,10"/>
+
+            <Label Text="*Имя директора:"/>
+            <Entry Placeholder="Введите имя..." Text="{Binding CeoName}"/>
+            <BoxView HeightRequest="1" Color="Gray" Margin="0,0,0,10"/>
+
+            <Label Text="*Номер телефона:"/>
+            <Entry Placeholder="+7 123 456 78 90" Text="{Binding Phone}"/>
+            <BoxView HeightRequest="1" Color="Gray" Margin="0,0,0,10"/>
+
+            <Label Text="*Email:"/>
+            <Entry Placeholder="example@mail.com" Text="{Binding Email}"/>
+            <BoxView HeightRequest="1" Color="Gray" Margin="0,0,0,10"/>
+
+            <Label Text="Рейтинг:"/>
+            <Entry Placeholder="1-10" Text="{Binding Rating}"/>
+            <BoxView HeightRequest="1" Color="Gray" Margin="0,0,0,10"/>
+
+            <Label Text="Адрес:"/>
+            <Entry Placeholder="Введите адрес..." Text="{Binding Address}"/>
+            <BoxView HeightRequest="1" Color="Gray" Margin="0,0,0,10"/>
+
+            <Label Text="ИНН:"/>
+            <Entry Placeholder="1234567890" Text="{Binding Itn}"/>
+            <BoxView HeightRequest="1" Color="Gray" Margin="0,0,0,10"/>
+
+            <Button Text="Добавить" WidthRequest="350" Margin="0,20,0,0" Command="{Binding CreateCommand}"/>
+            <Button Text="Отмена" WidthRequest="350" BackgroundColor="Gray" Command="{Binding CancelCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

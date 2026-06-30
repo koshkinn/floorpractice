@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FloorMAUI.Views.HistoryPage"
+             Title="HistoryPage"
+             BackgroundColor="White">
+    <VerticalStackLayout>
+        <Button Text="Назад" WidthRequest="150"
+    FontSize="Medium" HorizontalOptions="Start"
+    Margin="10"
+    Command="{Binding CancelCommand}"/>
+        <Grid ColumnDefinitions="70*, 20*, 10*">
+            <Label Text="Название"
+                   TextColor="Black"
+                   FontSize="Medium"
+                   Margin="10"
+                   Grid.Column="0"/>
+            <Label Text="Количество"
+                   TextColor="Black"
+                   FontSize="Medium"
+                   Margin="10"
+                   Grid.Column="1"/>
+            <Label Text="Дата"
+                   TextColor="Black"
+                   FontSize="Medium"
+                   Margin="10"
+                   Grid.Column="2"/>
+        </Grid>
+        <Border StrokeThickness="2"/>
+
+        <CollectionView ItemsSource="{Binding History}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="70*, 20*, 10*">
+                        <Border Grid.Column="0">
+                            <Label Text="{Binding ProductName}"
+                                   TextColor="Black"
+                                   FontSize="Medium"
+                                   Margin="10"
+                                   VerticalOptions="Center"/>
+                        </Border>
+                        <Border Grid.Column="1">
+                            <Label Text="{Binding Amount}"
+                                   TextColor="Black"
+                                   FontSize="Medium"
+                                   Margin="10"
+                                   VerticalOptions="Center"/>
+                        </Border>
+                        <Border Grid.Column="2">
+                            <Label Text="{Binding SellDate}"
+                                   TextColor="Black"
+                                   FontSize="Medium"
+                                   Margin="10"
+                                   VerticalOptions="Center"/>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

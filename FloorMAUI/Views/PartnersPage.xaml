@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FloorMAUI.Views.Partners"
+             Title="Partners"
+             x:Name="partnersPage">
+    <Grid RowDefinitions="auto, *" BackgroundColor="White">
+        <Image Source="masterfloor.png"
+               WidthRequest="80"
+               HeightRequest="80"
+               HorizontalOptions="Start"
+               Margin="10"/>
+        <Label Grid.Row="0"
+                   Text="Партнеры"
+                   FontSize="Large"
+                   HorizontalOptions="Center"
+                   TextColor="Black"
+                   Margin="0,10"/>
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button HeightRequest="75"
+                    Text="Рассчет материала"
+                    FontSize="Medium"
+                    Margin="10"
+                    Command="{Binding MaterialPageCommand}"/>
+            <Button WidthRequest="75"
+                    HeightRequest="75"
+                    Text="+"
+                    FontSize="Large"
+                    HorizontalOptions="End"
+                    Margin="10"
+                    Command="{Binding AddPageCommand}"
+                    BackgroundColor="#67BA80"/>
+        </HorizontalStackLayout>
+        <CollectionView Grid.Row="1" 
+                            ItemsSource="{Binding Partners}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10, 5, 10, 5">
+                        <Border StrokeThickness="2"
+                                    Stroke="Gray">
+                            <Grid>
+                                <VerticalStackLayout Grid.Column="0"
+                                                     Spacing="5"
+                                                     Padding="10">
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="{Binding Type}" TextColor="Black"/>
+                                        <Label Text="|" TextColor="Black"/>
+                                        <Label Text="{Binding Name}" TextColor="Black"/>
+                                    </HorizontalStackLayout>
+                                    <Label Text="{Binding CeoName}" TextColor="Black"/>
+                                    <Label Text="{Binding Phone}" TextColor="Black"/>
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="Рейтинг:" TextColor="Black"/>
+                                        <Label Text="{Binding Rating}" TextColor="Black"/>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                                <HorizontalStackLayout 
+                                    HorizontalOptions="End">
+                                    <Label Text="Скидка:"
+                                           VerticalOptions="Center"
+                                           TextColor="Black"/>
+
+                                    <Label
+                                           Text="{Binding GetDiscount}"
+                                           VerticalOptions="Center"
+                                           Padding="15"
+                                           TextColor="Black"/>
+                                    <Button Text="История"
+                                            HeightRequest="35"
+                                            Margin="15"
+                                            Command="{Binding Source={x:Reference partnersPage},
+                                            Path = BindingContext.HistoryPageCommand}"
+                                            CommandParameter="{Binding Id}"/>
+                                    
+                                    <Button Text="Редактировать"
+                                           HeightRequest="35"
+                                           Margin="15"
+                                           Command="{Binding Source={x:Reference partnersPage},
+                                           Path=BindingContext.EditPageCommand}"
+                                           CommandParameter="{Binding}"
+                                           BackgroundColor="#67BA80"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
